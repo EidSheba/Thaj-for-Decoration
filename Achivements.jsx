@@ -29,7 +29,7 @@ const Achivements = () => {
       if (sectionRef.current) {
         sectionRef.current.classList.add('in-view');
       }
-      const targets = [32, 15, 54];
+      const targets = [54, 38, 103];
       const delays = [0, 200, 400]; // مشروع, مصمم, عميل
       numRefs.current.forEach((el, idx) => {
         if (!el) return;
@@ -57,7 +57,7 @@ const Achivements = () => {
           }
         });
       },
-      { threshold: 0.6, rootMargin: '0px 0px -10% 0px' }
+      { threshold: 0.3 }
     );
 
     if (sectionRef.current) observer.observe(sectionRef.current);
@@ -68,8 +68,8 @@ const Achivements = () => {
     <section id="achievements" className="achievements" ref={sectionRef}>
       <div className="container">
         <p className="intro">
-          النموذج الأول من نوعه في المملكة، لنعيد تعريف تجربة التصميم الداخلي عبر تجربة ذكية تربطك بخبراتنا في التصميم الداخلي
-          لتصل إليهم بسهولة من جوالك
+          
+بدأنا من التنفيذ قبل التصميم، وهذا عطانا رؤية واقعية. نصمم لك اليوم تصاميم جميلة وقابلة للتنفيذ وتراعي ميزانيتك
         </p>
 
         <div className="stats" role="list">
@@ -79,7 +79,7 @@ const Achivements = () => {
           </div>
           <div className="stat" role="listitem">
             <div className="value"><span ref={(el) => (numRefs.current[1] = el)}>0</span><span>+</span></div>
-            <div className="label">مصمم</div>
+            <div className="label">تنفيذ</div>
           </div>
           <div className="stat" role="listitem">
             <div className="value"><span ref={(el) => (numRefs.current[2] = el)}>0</span><span>+</span></div>

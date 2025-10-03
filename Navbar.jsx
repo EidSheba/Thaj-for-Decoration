@@ -34,6 +34,11 @@ const Navbar = () => {
               من نحن
             </Link>
           </li>
+          <li>
+            <Link to="services" smooth={true} duration={500} className="nav-link">
+              خدمتنا
+            </Link>
+          </li>
           
           <li className={`dropdown ${workOpen ? 'open' : ''}`}>
             <span
@@ -48,11 +53,11 @@ const Navbar = () => {
               <span className="dropdown-arrow">▼</span>
             </span>
             <div className="dropdown-menu">
-              <Link to="interior-design" smooth={true} duration={500} className="dropdown-item">
+              <Link to="desgin-section" smooth={true} duration={500} className="dropdown-item">
                 تصميم داخلي
               </Link>
-              <Link to="interior-decorations" smooth={true} duration={500} className="dropdown-item">
-                تصميم خارجي
+              <Link to="doing-section" smooth={true} duration={500} className="dropdown-item">
+                التنفيذ 
               </Link>
             </div>
           </li>

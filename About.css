@@ -1,0 +1,203 @@
+.about-section {
+  padding: 70px 0;
+  background: #ffffff;
+}
+
+.about-section .container {
+  width: min(1200px, 92%);
+  margin: 0 auto;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px; /* increase space between text and visuals */
+  align-items: center;
+}
+
+.about-visuals {
+  justify-self: end; /* push visuals closer to the right edge */
+}
+
+/* Visuals */
+.about-visuals .stack {
+  position: relative;
+  width: 100%;
+  max-width: 680px; /* bigger visuals area */
+  margin: 0 auto;
+  perspective: 1000px; /* enable 3D depth for advanced hover */
+}
+
+.shot {
+  width: 100%;
+  height: 420px; /* bigger primary image */
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  /* visual enter animation base */
+  transform: translateY(40px);
+  opacity: 0;
+  transition: transform 700ms ease, opacity 700ms ease, box-shadow 300ms ease, filter 300ms ease;
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+.shot.floating {
+  position: absolute;
+  inset-inline-start: -24px;
+  inset-block-start: -24px;
+  width: 45%; /* smaller logo image */
+  height: 220px; /* smaller height */
+  /* include rotate with initial left offset */
+  transform: rotate(-3deg) translateX(-40px);
+  opacity: 0;
+  transition: transform 700ms ease, opacity 700ms ease;
+}
+
+/* In-view: settle visuals to normal positions */
+.about-section.in-view .shot {
+  transform: translateY(0);
+  opacity: 1;
+  transition-delay: 150ms;
+}
+
+.about-section.in-view .shot.floating {
+  transform: rotate(-3deg) translateX(0);
+  opacity: 1;
+  transition-delay: 420ms;
+  /* continuous bounce while in view */
+  animation: bounceY 2000ms ease-in-out 520ms infinite both;
+}
+
+/* Distinct hover animations (apply once images are in view) */
+.about-section.in-view .shot.primary:hover {
+  /* keep base position and add gentle pop */
+  transform: translateY(0) rotateX(4deg) rotateY(-4deg) translateZ(12px) scale(1.04);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+}
+
+.about-section.in-view .shot.floating:hover {
+  /* preserve the base rotate and lift slightly */
+  transform: rotate(-2deg) translateX(0) translateY(-14px) scale(1.08);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.2);
+  animation: wobble 900ms ease-out 1;
+}
+
+/* Add a sheen sweep over the primary image on hover */
+.shot.primary { position: relative; overflow: hidden; }
+.shot.primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255,255,255,0) 20%, rgba(255,255,255,0.35) 50%, rgba(255,255,255,0) 80%);
+  transform: translateX(-120%) skewX(-20deg);
+  opacity: 0;
+  pointer-events: none;
+}
+.about-section.in-view .shot.primary:hover::after {
+  animation: sheen 1100ms ease forwards;
+}
+
+/* Removed infinite bob; replaced by finite bounceY above */
+
+/* Keyframes */
+@keyframes sheen {
+  10% { opacity: 1; }
+  100% { transform: translateX(140%) skewX(-20deg); opacity: 0; }
+}
+
+@keyframes wobble {
+  0% { transform: rotate(-2deg) translateX(0) translateY(-14px) scale(1.08); }
+  50% { transform: rotate(0deg) translateX(2px) translateY(-18px) scale(1.07); }
+  100% { transform: rotate(-2deg) translateX(0) translateY(-14px) scale(1.08); }
+}
+
+/* Finite bounce for the floating logo */
+@keyframes bounceY {
+  0%   { transform: rotate(-3deg) translateX(0) translateY(0); }
+  25%  { transform: rotate(-3deg) translateX(0) translateY(-18px); }
+  50%  { transform: rotate(-3deg) translateX(0) translateY(0); }
+  75%  { transform: rotate(-3deg) translateX(0) translateY(-10px); }
+  100% { transform: rotate(-3deg) translateX(0) translateY(0); }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .shot,
+  .shot.floating {
+    transform: none !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
+}
+
+/* Content */
+.about-content .about-title {
+  font-size: clamp(3.6rem, 4vw, 2.2rem);
+  margin: 0 0 10px;
+  font-weight: 800;
+  color: #ffc107;
+}
+
+.about-text {
+  color: #555;
+  line-height: 1.9;
+  margin-bottom: 12px;
+  font-size: clamp(1.6rem, 4vw, 1.2rem);
+  /* initial off-screen state (from right) */
+  transform: translateX(40px);
+  opacity: 0;
+  transition: transform 1100ms ease, opacity 1100ms ease;
+}
+
+.about-list {
+  margin: 0 0 14px;
+  padding: 0 1rem;
+  font-size: clamp(1.3rem, 4vw, 1.2rem);
+}
+
+.about-list li {
+  margin: 6px 0;
+  transform: translateX(30px);
+  opacity: 0;
+  transition: transform 1000ms ease, opacity 1000ms ease;
+}
+
+/* When in view, reveal */
+.about-section.in-view .about-text {
+  transform: translateX(0);
+  opacity: 1;
+  transition-delay: 180ms; /* text first, slower */
+}
+
+.about-section.in-view .about-list li {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Stagger list items (slower) */
+.about-section.in-view .about-list li:nth-child(1) { transition-delay: 380ms; }
+.about-section.in-view .about-list li:nth-child(2) { transition-delay: 680ms; }
+.about-section.in-view .about-list li:nth-child(3) { transition-delay: 980ms; }
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .about-text,
+  .about-list li {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+
+
+
+@media (max-width: 992px) {
+  .about-grid { grid-template-columns: 1fr; gap: 20px; }
+  .shot { height: 340px; }
+  /* Hide floating logo image on small screens */
+  .shot.floating { display: none !important; }
+  /* Center intro text on small screens */
+  .intro { text-align: center; }
+}

@@ -2,6 +2,7 @@
   background: #242424;
   color: #ffffff;
   padding: 60px 0;
+  direction: ltr; /* switch direction for this section only */
 }
 
 .achievements .container {
@@ -10,7 +11,7 @@
 }
 
 .intro {
-  text-align: center;
+  text-align: center; /* align opposite side */
   line-height: 1.9;
   color: #eaeaea;
   font-size: clamp(2.1rem, 2vw, 1.3rem);
@@ -31,7 +32,7 @@
 }
 
 .value {
-  color: #E8661B;
+  color: #ffc107;
   font-weight: 800;
   font-size: clamp(4rem, 6vw, 3rem);
   transform: translateY(24px);

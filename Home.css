@@ -1,6 +1,6 @@
 :root {
-  --brand: #E8661B;
-  --brand-hover: #d75a13;
+  --brand: #FFC107;
+  --brand-hover: #FFC107;
 }
 
 /* Centered hero section */
@@ -36,10 +36,11 @@
 }
 
 .hero-title {
-  font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+  font-size: clamp(3rem, 4.5vw, 2.8rem);
   font-weight: 800;
   margin: 0.25rem 0 0.9rem;
   color: #1a1a1a;
+  transform: translateY(-27px);
 }
 
 .hero-actions {
@@ -98,7 +99,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.85rem 1.3rem;
+  padding: 0.65rem 1rem;
   border-radius: 12px;
   text-decoration: none;
   font-weight: 700;
@@ -106,8 +107,8 @@
   overflow: hidden;
   transition: all 180ms ease, box-shadow 200ms ease, background-color 160ms ease, color 160ms ease, border-color 160ms ease;
   will-change: transform;
-  width: 200px;
-  font-size: 20px;
+  width: 160px;
+  font-size: 16px;
 }
 
 .btn-primary {
@@ -159,6 +160,27 @@
   box-shadow: none;
 }
 
-@media (max-width: 640px) {
-  .hero-logo { width: 280px; height: 280px; }
+/* Large screen buttons */
+@media (min-width: 1200px) {
+  .btn {
+    width: 220px;
+    font-size: 22px;
+    padding: 1rem 1.5rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .btn {
+    width: 200px;
+    font-size: 24px;
+    padding: 1.1rem 1.7rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  .btn {
+    width: 210px;
+    font-size: 26px;
+    padding: 1.2rem 1.9rem;
+  }
 }

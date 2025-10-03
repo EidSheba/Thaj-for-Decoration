@@ -8,9 +8,9 @@ const Home = () => {
       <div className="container">
         <div className="hero">
           <img src={logo2} alt="Logo" className="hero-logo" />
-          <h1 className="hero-title">نُصمّم بإتقان ونقدّم ما يُلهمك</h1>
+          <h1 className="hero-title"> ديـــكـــور <span style={{color:"#FFC107"}}> يـــعـــبّـــر </span> عـــنـــك    </h1>
           <div className="hero-actions">
-            <a href="#contact" className="btn btn-primary">تواصل</a>
+            <a href="#contact" className="btn btn-primary">تواصل معنا</a>
             <a href="#services" className="btn btn-ghost">اعمالنا</a>
           </div>
         </div>
