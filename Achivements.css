@@ -1,0 +1,78 @@
+.achievements {
+  background: #242424;
+  color: #ffffff;
+  padding: 60px 0;
+}
+
+.achievements .container {
+  width: min(1200px, 92%);
+  margin: 0 auto;
+}
+
+.intro {
+  text-align: center;
+  line-height: 1.9;
+  color: #eaeaea;
+  font-size: clamp(2.1rem, 2vw, 1.3rem);
+  margin: 0 auto 36px;
+  max-width: 1000px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  align-items: center;
+  text-align: center;
+}
+
+.stat {
+  padding: 14px 10px;
+}
+
+.value {
+  color: #E8661B;
+  font-weight: 800;
+  font-size: clamp(4rem, 6vw, 3rem);
+  transform: translateY(24px);
+  opacity: 0;
+  transition: transform 600ms ease, opacity 600ms ease;
+}
+
+.label {
+  color: #f1f1f1;
+  font-size: clamp(3.05rem, 2vw, 1.3rem);
+  transform: translateY(28px);
+  opacity: 0;
+  transition: transform 650ms ease, opacity 650ms ease;
+}
+
+/* Plus sign styling inside value */
+.value span {
+  font-size: 0.85em;
+  margin-inline-start: 2px;
+}
+
+/* In-view reveal */
+.achievements.in-view .value,
+.achievements.in-view .label {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Stagger per column */
+.achievements.in-view .stat:nth-child(1) .value,
+.achievements.in-view .stat:nth-child(1) .label { transition-delay: 250ms; }
+.achievements.in-view .stat:nth-child(2) .value,
+.achievements.in-view .stat:nth-child(2) .label { transition-delay: 450ms; }
+.achievements.in-view .stat:nth-child(3) .value,
+.achievements.in-view .stat:nth-child(3) .label { transition-delay: 650ms; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .value, .label { transition: none; transform: none; opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .stats { grid-template-columns: 1fr; gap: 10px; }
+}

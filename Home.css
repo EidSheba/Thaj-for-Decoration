@@ -1,0 +1,164 @@
+:root {
+  --brand: #E8661B;
+  --brand-hover: #d75a13;
+}
+
+/* Centered hero section */
+.home.hero-center {
+  background: transparent; /* use page background */
+  display: grid;
+  place-items: center;
+  min-height: 78vh;
+}
+
+.home .container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+
+/* Wrapper */
+.hero {
+  text-align: center;
+  padding: 2.5rem 0;
+}
+
+.hero-logo {
+  width: 700px;
+  height: 400px;
+  border-radius: 24px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 1rem;
+  /* On-load animation */
+  transform: scale(0.5);
+  opacity: 0;
+  animation: logoIn 700ms ease-out 120ms forwards;
+}
+
+.hero-title {
+  font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+  font-weight: 800;
+  margin: 0.25rem 0 0.9rem;
+  color: #1a1a1a;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 0.9rem;
+  justify-content: center;
+}
+
+/* On-load button animations */
+.hero-actions a:first-child {
+  transform: translateX(40px);
+  opacity: 0;
+  animation: btnInRight 600ms ease-out 300ms forwards;
+}
+
+.hero-actions a:last-child {
+  transform: translateX(-40px);
+  opacity: 0;
+  animation: btnInLeft 600ms ease-out 420ms forwards;
+}
+
+/* Keyframes */
+@keyframes logoIn {
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes btnInRight {
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes btnInLeft {
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .hero-logo,
+  .hero-actions a:first-child,
+  .hero-actions a:last-child {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.3rem;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 700;
+  position: relative;
+  overflow: hidden;
+  transition: all 180ms ease, box-shadow 200ms ease, background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+  will-change: transform;
+  width: 200px;
+  font-size: 20px;
+}
+
+.btn-primary {
+  background: var(--brand);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  scale: 1.1;
+  color: #fff;
+  
+}
+
+/* Ghost button */
+.btn-ghost {
+  color: #fff;
+  background-color: #333333;
+  border: 1px solid #e3e3e3;
+}
+
+.btn-ghost:hover {
+  color: #333333;
+  background-color: #fff;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+
+/* Subtle sheen sweep on hover */
+.btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 24px;
+  transform: translateX(-140%) skewX(-20deg);
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.38) 50%, rgba(255,255,255,0) 100%);
+  opacity: 0;
+  transition: transform 500ms ease, opacity 300ms ease;
+}
+
+.btn:hover::after {
+  transform: translateX(160%) skewX(-20deg);
+  opacity: 1;
+}
+
+/* Active press feedback */
+.btn:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: none;
+}
+
+@media (max-width: 640px) {
+  .hero-logo { width: 280px; height: 280px; }
+}
