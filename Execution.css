@@ -1,0 +1,301 @@
+.execution {
+  width: 100%;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.parent-execution {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(11, 100px);
+  gap: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+/* Animation classes */
+[class^="div"] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
+}
+
+/* Fade in animation */
+.div1-execution {
+  animation: fadeIn 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Right side animations */
+.div2-execution,
+.div5-execution,
+.div7-execution {
+  transform: translateX(150px);
+}
+
+/* Left side animations */
+.div3-execution,
+.div6-execution,
+.div8-execution {
+  transform: translateX(-150px);
+}
+
+/* Scale animation for the text div */
+.div4-execution {
+  transform: scale(0.7);
+}
+
+/* Animation when element is visible */
+[class^="div"].animate {
+  opacity: 1;
+  transform: translate(0) scale(1);
+}
+
+/* Staggered animation delays */
+.div2-execution {
+  transition-delay: 0.4s;
+}
+.div3-execution {
+  transition-delay: 0.6s;
+}
+.div4-execution {
+  transition-delay: 0.8s;
+}
+.div5-execution {
+  transition-delay: 1s;
+}
+.div6-execution {
+  transition-delay: 1.2s;
+}
+.div7-execution {
+  transition-delay: 1.4s;
+}
+.div8-execution {
+  transition-delay: 1.6s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  30% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+[class^="div"] {
+  min-height: 200px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+[class^="div"]:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Add hover effect to all grid items */
+[class^="div"] {
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+[class^="div"]:hover {
+  transform: scale(1.02);
+}
+
+.div1-execution {
+  grid-row: span 3 / span 3;
+  border-radius: 8px;
+  background-color: #242424;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.content-execution {
+  color: white;
+}
+
+.content-execution h3 {
+  color: #ffc107; /* main color */
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.content-execution p {
+  color: #fff; /* secondary color */
+  font-size: 1.6rem;
+}
+
+.div2-execution {
+  grid-row: span 5 / span 5;
+  background-image: url("../assets/images/IMG_8467.PNG");
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+}
+
+.div3-execution {
+  grid-row: span 2 / span 2;
+  background-image: url("../assets/images/IMG_8469.PNG");
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+}
+
+.div4-execution {
+  grid-row: span 3 / span 3;
+  grid-column-start: 3;
+  grid-row-start: 3;
+  background-color: rgb(43 43 43 / 98%);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.div4-execution p {
+  color: #fff;
+  font-size: 1.2rem;
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+.div5-execution {
+  grid-row: span 5 / span 5;
+  grid-row-start: 4;
+  background-image: url("../assets/images/one.PNG");
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+}
+
+.div6-execution {
+  grid-row: span 3 / span 3;
+  grid-column-start: 2;
+  grid-row-start: 6;
+  background-image: url("../assets/images/IMG_8472.PNG");
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+}
+
+.div7-execution {
+  grid-row: span 6 / span 6;
+  grid-column-start: 3;
+  grid-row-start: 6;
+  background-image: url("../assets/images/IMG_8473.PNG");
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+}
+
+.div8-execution {
+  grid-column: span 2 / span 2;
+  grid-row: span 3 / span 3;
+  grid-row-start: 9;
+  background-image: url("../assets/images/IMG_8474.PNG");
+
+  border-radius: 8px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+
+/* Make the grid fill the viewport a bit and ensure items are visible */
+.parent-execution {
+  min-height: 90vh;
+}
+
+/* Common styles for grid items */
+.parent-execution > div {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* subtle dark overlay to keep text readable */
+.parent-execution > div::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35));
+  z-index: 0;
+}
+
+.parent-execution > div > * {
+  z-index: 1;
+}
+
+/* Background images for each cell — using images present in the workspace */
+.div1-execution {
+  background-color: rgba(0, 0, 0, 0.443);
+}
+.div1-execution .content-execution {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.div2-execution {
+  background-image: url("images/desgin/two.JPG");
+  background-size: cover;
+  background-position: center;
+}
+.div3-execution {
+  background-image: url("images/desgin/three.JPG");
+  background-size: cover;
+  background-position: center;
+}
+.div4-execution {
+  background-image: url("images/desgin/four.JPG");
+  background-size: cover;
+  background-position: center;
+}
+.div5-execution {
+  background-image: url("images/desgin/five.JPG");
+  background-size: cover;
+  background-position: center;
+}
+.div6-execution {
+  background-image: url("images/desgin/IMG_9780.JPG");
+  background-size: cover;
+  background-position: center;
+}
+.div7-execution {
+  background-image: url("images/desgin/IMG_9781.JPG");
+  background-size: cover;
+  background-position: center;
+}
+.div8-execution {
+  background-image: url("images/desgin/IMG_9783.JPG");
+  background-size: cover;
+  background-position: center;
+}
+
+/* Fallback colors if images missing */
