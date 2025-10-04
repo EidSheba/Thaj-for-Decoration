@@ -1,0 +1,174 @@
+.parent {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  gap: 6px;
+  padding: 200px;
+  background-color: #FFFBED;
+}
+
+.div1 {
+  grid-column: span 2 / span 2;
+  grid-row: span 3 / span 3;
+  background-color: #2b2b2bfa;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.logo-image {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.works-text {
+  font-size: 48px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.9);
+  z-index: 2;
+  text-align: center;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Scroll Animation Base Styles */
+.animate-on-scroll {
+  opacity: 0;
+  transform-origin: center;
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.animate-on-scroll.animate-in {
+  opacity: 1;
+  transform: translateX(0) translateY(0) scale(1);
+}
+
+/* Individual Animation Styles */
+.slide-in-right {
+  transform: translateX(100px);
+}
+
+.slide-in-left {
+  transform: translateX(-100px);
+}
+
+.slide-in-bottom {
+  transform: translateY(100px);
+}
+
+.zoom-in {
+  transform: scale(0.5);
+}
+
+/* Keyframes for continuous animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.love-text {
+  font-size: 32px;
+  color: white;
+  margin-top: 20px;
+  text-align: center;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.div2 {
+  grid-column: span 4 / span 4;
+  grid-row: span 3 / span 3;
+  grid-column-start: 3;
+}
+
+.div3 {
+  grid-column: span 2 / span 2;
+  grid-row: span 2 / span 2;
+  grid-column-start: 7;
+}
+
+.div4 {
+  grid-column: span 2 / span 2;
+  grid-row: span 4 / span 4;
+  grid-column-start: 7;
+  grid-row-start: 3;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 15px;
+  padding: 30px 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.div4 h4 {
+  font-size: 30px;
+  line-height: 1.6;
+  color: #2c3e50;
+  text-align: center;
+  margin: 15px 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 400;
+  position: relative;
+  z-index: 2;
+}
+
+.div4 h4:first-child {
+  font-style: italic;
+  color: #34495e;
+  font-weight: 500;
+}
+
+.div4 h4:last-child {
+  color: #7f8c8d;
+  font-weight: 400;
+}
+
+.div5 {
+  grid-column: span 2 / span 2;
+  grid-row: span 5 / span 5;
+  grid-row-start: 4;
+}
+
+.div6 {
+  grid-column: span 4 / span 4;
+  grid-row: span 5 / span 5;
+  grid-column-start: 3;
+  grid-row-start: 4;
+}
+
+.div7 {
+  grid-column: span 2 / span 2;
+  grid-row: span 6 / span 6;
+  grid-column-start: 7;
+  grid-row-start: 7;
+}
+
+.div8 {
+  grid-column: span 6 / span 6;
+  grid-row: span 4 / span 4;
+  grid-row-start: 9;
+}
